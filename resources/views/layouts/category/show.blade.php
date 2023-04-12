@@ -25,6 +25,11 @@
                                 <input type="text" value="{{$category->title}}" name="title" class="form-control">
                                 <div id="emailHelp" class="form-text">Sửa danh mục</div>
                             </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">MÔ TẢ DANH MỤC</label>
+                                <textarea type="text" value="{{$category->short_desc}}" name="short_desc" rows="5" style="resize: none;" class="form-control"></textarea>
+                                <div id="emailHelp" class="form-text">Sửa mô tả danh mục (không quá 250 ký tự)</div>
+                            </div>
                          <button type="submit" class="btn btn-primary">CẬP NHẬT</button>
                         </form>
                     </div>

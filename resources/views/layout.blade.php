@@ -41,7 +41,15 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="head-main">
-				<a href="{{url('/')}}"><img src="{{asset('images/logo-1.png')}}" alt="" /></a>
+				<!-- <a href="{{url('/')}}"><img src="{{asset('images/logo-1.png')}}" alt="" /></a> -->
+				<a href="{{url('/')}}" class="logo" style="font-size: 45px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: brown;">
+					BLOGS 24H
+			    </a>
+			</div>
+
+			<!-- button admin tam thoi -->
+			<div style="float: right;">
+				<a href="{{route('login')}}"> <input type="button" class="btn btn-info" value="LOGIN"></input></a>
 			</div>
 		</div>
 	</div>
@@ -49,22 +57,35 @@
 	<!--start-header-->
 	<div class="header">
 		<div class="container">
+			<style>
+				.cate-title:hover{
+					color:darkturquoise !important;
+				}
+			
+			</style>
 			<div class="head">
 			<div class="navigation">
 				 <span class="menu"></span>
 					<ul class="navig">
-						<li><a href="{{url('/')}}"  class="active">TRANG CHỦ</a></li>					
-						<li><a href="{{url('/category_post')}}">DANH MỤC BÀI VIẾT</a></li>
-						<li><a href="{{url('/news')}}">TIN TỨC</a></li>
-						<li><a href="{{url('/about')}}">VỀ CHÚNG TÔI</a></li>
+						<li><a href="{{url('/')}}"  class="active">TRANG CHỦ</a></li>		
+						@foreach($category as $cate)			
+						<li><a class="cate-title" href="{{route('danh-muc.show',['danh_muc'=>$cate->id,'slug'=>Str::slug($cate->title)])}}">{{$cate->title}}</a></li>
+					    @endforeach
 					</ul>
 			</div>
 	
 			<div class="header-right">
-				<div class="search-bar">
-					<input type="text" placeholder="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
-				</div>
+				<style>
+					.btn-search:hover{
+						color:mediumturquoise;
+					}
+				</style>
+				<form action="{{url('tim-kiem')}}" method="get">
+					<div class="search-bar">
+						<input type="text" placeholder="Tìm kiếm" name="keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+						<input type="submit" class="btn-search" value="Tìm kiếm" name="timkiem">
+					</div>
+				</form>
 				<ul>
 					<li><a href="#"><span class="fb"> </span></a></li>
 					<li><a href="#"><span class="twit"> </span></a></li>
@@ -72,6 +93,7 @@
 			</div>
 				<div class="clearfix"></div>
 			</div>
+			
 			</div>
 		</div>
 	<!-- script-for-menu -->

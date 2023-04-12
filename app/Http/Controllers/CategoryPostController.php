@@ -33,6 +33,7 @@ class CategoryPostController extends Controller
     {
        $category = new CategoryPost();
        $category->title = $request->title;
+       $category->short_desc = $request->short_desc;
        $category->save();
        return redirect::route('category.index')->with('success','Thêm danh mục thành công!');
     }
@@ -62,6 +63,7 @@ class CategoryPostController extends Controller
         $data = $request->all();
         $category = CategoryPost::find($categoryPost);
         $category->title = $data['title'];
+        $category->short_desc = $data['short_desc'];
         $category->save();    
         return redirect::route('category.index')->with('success','Cập nhật danh mục thành công!');
     }

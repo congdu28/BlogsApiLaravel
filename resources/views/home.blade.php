@@ -56,8 +56,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">DANH SÁCH</a>
-                <a class="collapse-item" href="cards.html">THÊM BÀI VIẾT</a>
+                <a class="collapse-item" href="{{route('post.index')}}">DANH SÁCH</a>
+                <a class="collapse-item" href="{{route('post.create')}}">THÊM BÀI VIẾT</a>
             </div>
         </div>
     </li>
@@ -160,6 +160,8 @@
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> XUẤT FILE</a>
             </div>
+
+            
 
         </div>
         <!-- /.container-fluid -->

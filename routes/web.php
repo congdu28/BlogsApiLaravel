@@ -1,6 +1,5 @@
 <?php
-
-use App\Http\Controllers\BaiVietController;
+use App\Http\Controllers\Api\v1\BaiVietController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +17,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/bai-viet/{id}', [BaiVietController::class, 'show']);
+Route::get('bai-viet', [BaiVietController::class, 'show']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\LoginController::class, 'index'])->name('home');
+Route::get('tim-kiem', [HomeController::class, 'tim_kiem']);

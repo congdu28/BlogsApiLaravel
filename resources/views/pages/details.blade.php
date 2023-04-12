@@ -4,22 +4,28 @@
 	<!--start-single-->
 	<div class="single">
 		<div class="container">
-				<div class="single-top">
-						<a href="#"><img class="img-responsive" src="{{asset('images/single-1.jpg')}}" alt=" "></a>
+			<div class="col-md-8">
+				<style>
+					.single-top.single-post img{
+                       width: 100% !important;                        
+					}
+				</style>
+				<div class="single-top single-post img">
+						<!-- <a href="#"><img height="400" width="1200" class="img-responsive" src="{{asset('uploads/'.$post->image)}}" alt=" "></a> -->
 					<div class=" single-grid">
-						<h4>SED LOREET ALIQUAM LEOTELLUS DOLOR DAPIBUS</h4>				
-							<ul class="blog-ic">
-								<li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i>Super user</span> </a> </li>
-		  						 <li><span><i class="glyphicon glyphicon-time"> </i>June 14, 2013</span></li>		  						 	
-		  						 <li><span><i class="glyphicon glyphicon-eye-open"> </i>Hits:145</span></li>
+						<h2 class="text-center">{{$post->title}}</h2>				
+							<ul class="blog-ic" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+								<li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i> Admin</span> </a> </li>
+		  						 <li><span style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><i class="glyphicon glyphicon-time"> </i>{{$post->post_day}}</span></li>		  						 	
+		  						 <li><span style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><i class="glyphicon glyphicon-eye-open"> </i>Views: {{$post->views}}</span></li>
 		  					</ul>		  						
-						<p>Cras consequat iaculis lorem, id vehicula erat mattis quis. Vivamus laoreet velit justo, in ven e natis purus pretium sit amet. Praesent lectus tortor, tincidu nt in consectetur vestibulum, ultrices nec neque. Praesent nec sagittis mauris. Fusce convallis nunc neque. Integer egestas aliquam interdum. Nulla ante diam, interdum nec tempus eu, feugiat vel erat. Integer aliquam mi quis accum san porta.
-						Quisque nec turpis nisi. Proin lobortis nisl ut orci euismod, et lobortis est scelerisque. Sed eget volutpat ipsum. Integer fring illa leo porttitor, ultrices quam non, lobortis ligula. Aliquam vel consequat arcu.</p>
-						<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.
-							On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.</p>
+						   <p>{!!$post->desc!!}</p>
+						   <img height="200"  width="600" class="img-responsive" src="{{asset('uploads/'.$post->image)}}" alt=" ">
 					</div>
+
+					
 					<div class="comments heading">
-						<h3>Comments</h3>
+						<h3>Bình luận</h3>
 						<div class="media">
 					      	<div class="media-body">
 						        <h4 class="media-heading">	Richard Spark</h4>
@@ -42,18 +48,59 @@
 					      </div>
 					    </div>
     				</div>
-    				<div class="comment-bottom heading">
-    					<h3>Leave a Comment</h3>
-    					<form>	
-						<input type="text" value="Name" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Name';}">
-						<input type="text" value="Email" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Email';}">
-						<input type="text" value="Subject" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Subject';}">
-						<textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
-							<input type="submit" value="Send">
-					</form>
-    				</div>
-				</div>	
-			</div>					
+						<div class="comment-bottom heading">
+							<h3>Leave a Comment</h3>
+							<form>	
+							<input type="text" value="Name" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Name';}">
+							<input type="text" value="Email" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Email';}">
+							<input type="text" value="Subject" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Subject';}">
+							<textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+								<input type="submit" value="Send">
+						</form>
+    				</div>	
+					</div>	
+				</div>
+				<div class="col-md-4">
+					<style>
+						.cate-post:hover{
+							color:red;
+						}
+						.post-title:hover{
+							color:cyan;
+						}
+						
+					</style>
+					<style>
+										.img-post {
+										transition: transform 0.5s ease;
+										}
+
+										.img-post:hover {
+										transform: scale(1.1);
+										}
+								</style>
+				  <div class="abt-2 about-right heading">
+					    <h3>Bài Viết Liên Quan</h3>		
+							@foreach($post_related as $post)		
+							<div class="might-grid">
+							<a class="cate-post" href="{{route('danh-muc.show',['danh_muc'=>$post->category->id,'slug'=>Str::slug($post->category->title)])}}">
+								<h6>{{$post->category->title}}</h6>
+						    </a>
+								<div class="grid-might">
+									<a href="{{route('bai-viet.show',['bai_viet'=>$post->id])}}"> <img src="{{asset('uploads/'.$post->image)}}"
+                                       alt="{{Str::slug($post->title)}}" class="img-responsive img-post"> </a>
+								</div>
+								<div class="might-top">
+									<h5 ><a class="post-title" href="{{route('bai-viet.show',['bai_viet'=>$post->id])}}">{{$post->title}}</a></h5>
+									<p>{!!substr($post->desc,0,100)!!}</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							@endforeach		
+					</div>
+				</div>
+			</div>			
+					
 	</div>
 	<!--end-single-->
     @endsection

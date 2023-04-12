@@ -22,6 +22,17 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
+     <!-- Jquery CDN -->
+     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+     <!-- trinh soan thao van ban CKEditor 4 -->
+     <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+     <script type="text/javascript">
+        $(document).ready(function(){
+            CKEDITOR.replace('ckeditor_shortdesc');
+            CKEDITOR.replace('ckeditor_desc');
+        });    
+     </script>
+     <!-- <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script> -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -82,5 +93,7 @@
             @yield('content')
         </main>
     </div>
+    
+   
 </body>
 </html>

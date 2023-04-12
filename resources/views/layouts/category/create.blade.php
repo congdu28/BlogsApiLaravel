@@ -24,6 +24,11 @@
                                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <div id="emailHelp" class="form-text">Danh mục bài viết</div>
                             </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">MÔ TẢ NGẮN GỌN</label>
+                                <textarea name="short_desc" class="form-control" id="" rows="5" style="resize: none;" aria-describedby=""> </textarea>
+                                <div id="emailHelp" class="form-text">Mô tả danh mục (không quá 250 ký tự)</div>
+                            </div>
                          <button type="submit" class="btn btn-primary">THÊM</button>
                         </form>
                     </div>
